@@ -4,8 +4,11 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +23,7 @@ import com.gestao.tarefas.domain.Tarefa;
 import com.gestao.tarefas.dtos.TarefaDTO;
 import com.gestao.tarefas.service.TarefaService;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/tarefa")
 public class TarefaResource {
@@ -42,14 +46,14 @@ public class TarefaResource {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Tarefa> create(@RequestBody Tarefa obj){
+	public ResponseEntity<Tarefa> create( @Valid @RequestBody Tarefa obj){ 
 		obj = service.create(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build(); // body(obj); para retornar a tarefa criada
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<TarefaDTO> update(@PathVariable Integer id, @RequestBody TarefaDTO objDto){
+	public ResponseEntity<TarefaDTO> update(@PathVariable Integer id, @Valid @RequestBody TarefaDTO objDto){
 		Tarefa newObj = service.update(id, objDto);
 		return ResponseEntity.ok().body(new TarefaDTO(newObj));
 	}

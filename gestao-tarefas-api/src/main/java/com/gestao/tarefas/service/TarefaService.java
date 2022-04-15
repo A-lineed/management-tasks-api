@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.gestao.tarefas.domain.Tarefa;
 import com.gestao.tarefas.dtos.TarefaDTO;
+import com.gestao.tarefas.exceptions.DataIntegritViolationException;
 import com.gestao.tarefas.exceptions.ObjectNotFoundException;
 import com.gestao.tarefas.repositories.TarefaRepository;
 
@@ -22,11 +23,11 @@ public class TarefaService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Tarefa.class.getName()));
 	}
-	
-	public List<Tarefa> findAll(){
+
+	public List<Tarefa> findAll() {
 		return repository.findAll();
 	}
-	
+
 	public Tarefa create(Tarefa obj) {
 		obj.setId(null);
 		return repository.save(obj);
@@ -43,8 +44,12 @@ public class TarefaService {
 
 	public void delete(Integer id) {
 		findById(id);
-		repository.deleteById(id);
-		
+		try {
+			repository.deleteById(id);
+		} catch (DataIntegritViolationException e) {
+			throw new com.gestao.tarefas.exceptions.DataIntegritViolationException("Objeto não pode ser deletado!");
+		}
+
 	}
 
 }

@@ -16,13 +16,13 @@ public class DbService {
 
 	public void instaciaBaseDeDados() {
 
-		Tarefa tarefa1 = new Tarefa(null, "Estudar BI", "Estudar o segundo módulo do tema 3", "Leandro",
+		Tarefa tarefa1 = new Tarefa(1, "Estudar BI", "Estudar o primeiro módulo", "Leandro",
 				 new Date());
-		Tarefa tarefa2 = new Tarefa(null, "Estudar Java", "Estudar o segundo módulo do tema 3", "Aline",
-				 new Date());
-		Tarefa tarefa4 = new Tarefa(null, "Estudar a Bíblia", "Estudar Mateus", "Aline", new Date());
-
-		tarefaRepository.saveAll(Arrays.asList(tarefa1, tarefa2, tarefa4));
+//		Tarefa tarefa2 = new Tarefa(null, "Estudar Java", "Estudar o segundo módulo do tema 3", "Aline",
+//				 new Date());
+//		Tarefa tarefa4 = new Tarefa(null, "Estudar a Bíblia", "Estudar Mateus", "Aline", new Date());
+//
+		tarefaRepository.saveAll(Arrays.asList(tarefa1));
 	}
 
 }

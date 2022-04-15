@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class Tarefa implements Serializable {
@@ -15,15 +18,22 @@ public class Tarefa implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private Integer id;
+	
+	@NotEmpty(message = "Campo TÍTULO é requerido")
+	@Length(min = 5, max = 10, message = "O campo TÍTULO deve ter entre 05 a 10 caracteres")
 	private String titulo;
+
+	@NotEmpty(message = "Campo DESCRIÇÃO é requerido")
+	@Length(min = 05, max = 30, message = "O campo DESCRIÇÃO deve ter entre 05 a 10 caracteres")
 	private String descricao;
+	@NotEmpty(message = "Campo RESPONSÁVEL é requerido")
+	@Length(min = 3, max = 10, message = "O campo DESCRIÇÃO deve ter entre 03 a 10 caracteres")
 	private String responsavel;
 	// private Prioridade prioridade(Media, alta, baixa);
 	private Date deadline;
 
-	
 	public Tarefa() {
 		super();
 	}
