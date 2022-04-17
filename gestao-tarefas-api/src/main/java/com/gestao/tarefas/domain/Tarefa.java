@@ -18,27 +18,27 @@ public class Tarefa implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@NotEmpty(message = "Campo TÍTULO é requerido")
-	@Length(min = 5, max = 10, message = "O campo TÍTULO deve ter entre 05 a 10 caracteres")
+	@Length(min = 5, max = 30, message = "O campo TÍTULO deve ter entre 05 a 30 caracteres")
 	private String titulo;
 
 	@NotEmpty(message = "Campo DESCRIÇÃO é requerido")
-	@Length(min = 05, max = 30, message = "O campo DESCRIÇÃO deve ter entre 05 a 10 caracteres")
+	@Length(min = 05, max = 100, message = "O campo DESCRIÇÃO deve ter entre 05 a 100 caracteres")
 	private String descricao;
 	@NotEmpty(message = "Campo RESPONSÁVEL é requerido")
-	@Length(min = 3, max = 10, message = "O campo DESCRIÇÃO deve ter entre 03 a 10 caracteres")
+	@Length(min = 3, max = 15, message = "O campo DESCRIÇÃO deve ter entre 03 a 15 caracteres")
 	private String responsavel;
-	// private Prioridade prioridade(Media, alta, baixa);
-	private Date deadline;
+	private String prioridade;
+	private String deadline;
 
 	public Tarefa() {
 		super();
 	}
 
-	public Tarefa(Integer id, String titulo, String descricao, String responsavel, Date deadline) {
+	public Tarefa(Integer id, String titulo, String descricao, String responsavel, String deadline) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
@@ -79,11 +79,11 @@ public class Tarefa implements Serializable {
 		this.responsavel = responsavel;
 	}
 
-	public Date getDeadline() {
+	public String getDeadline() {
 		return deadline;
 	}
 
-	public void setDeadline(Date deadline) {
+	public void setDeadline(String deadline) {
 		this.deadline = deadline;
 	}
 
@@ -112,6 +112,19 @@ public class Tarefa implements Serializable {
 	public String toString() {
 		return "Tarefa [id=" + id + ", titulo=" + titulo + ", descricao=" + descricao + ", responsavel=" + responsavel
 				+ ", deadline=" + deadline + "]";
+	}
+
+	public String getPrioridade() {
+		return prioridade;
+	}
+
+	public void setPrioridade(String prioridade) {
+		this.prioridade = prioridade;
+	}
+
+	public Tarefa(String prioridade) {
+		super();
+		this.prioridade = prioridade;
 	}
 
 }

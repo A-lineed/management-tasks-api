@@ -1,7 +1,6 @@
 package com.gestao.tarefas.dtos;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import com.gestao.tarefas.domain.Tarefa;
 
@@ -12,8 +11,8 @@ public class TarefaDTO implements Serializable {
 	private String titulo;
 	private String descricao;
 	private String responsavel;
-	// private Prioridade prioridade(Media, alta, baixa);
-	private Date deadline;
+	private String prioridade;
+	private String deadline;
 
 	public TarefaDTO() {
 		super();
@@ -60,12 +59,25 @@ public class TarefaDTO implements Serializable {
 		this.responsavel = responsavel;
 	}
 
-	public Date getDeadline() {
+	public String getDeadline() {
 		return deadline;
 	}
 
-	public void setDeadline(Date deadline) {
+	public void setDeadline(String deadline) {
 		this.deadline = deadline;
+	}
+
+	public TarefaDTO(String prioridade) {
+		super();
+		this.prioridade = prioridade;
+	}
+
+	public String getPrioridade() {
+		return prioridade;
+	}
+
+	public void setPrioridade(String prioridade) {
+		this.prioridade = prioridade;
 	}
 
 }
