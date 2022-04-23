@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 
+
 import org.hibernate.validator.constraints.Length;
 
 @Entity
@@ -31,6 +32,7 @@ public class Tarefa implements Serializable {
 	@NotEmpty(message = "Campo RESPONSÁVEL é requerido")
 	@Length(min = 3, max = 15, message = "O campo DESCRIÇÃO deve ter entre 03 a 15 caracteres")
 	private String responsavel;
+	@Length(max =5, message = "O campo prioridade só pode ser uma dessas opções: ALTA, MÉDIA, BAIXA")
 	private String prioridade;
 	private String deadline;
 
@@ -38,12 +40,13 @@ public class Tarefa implements Serializable {
 		super();
 	}
 
-	public Tarefa(Integer id, String titulo, String descricao, String responsavel, String deadline) {
+	public Tarefa(Integer id, String titulo, String descricao, String responsavel,String prioridade, String deadline) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.descricao = descricao;
 		this.responsavel = responsavel;
+		this.prioridade = prioridade;
 		this.deadline = deadline;
 	}
 

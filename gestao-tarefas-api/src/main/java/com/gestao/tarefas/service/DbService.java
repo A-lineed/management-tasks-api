@@ -16,17 +16,9 @@ public class DbService {
 
 	public void instaciaBaseDeDados() {
 
-//		Tarefa tarefa1 = new Tarefa(1, "Bíblia", "Estudar Mateus", "Leandro",
-//				 new Date());
-//		Tarefa tarefa2 = new Tarefa(2, "Estudar", "Estudar o primeiro módulo", "Aline",
-//				 new Date());
-//		Tarefa tarefa3 = new Tarefa(3, "Estudar BI", "Estudar o segundo tema", "Leandro",
-//				 new Date());
-////		Tarefa tarefa2 = new Tarefa(null, "Estudar Java", "Estudar o segundo módulo do tema 3", "Aline",
-////				 new Date());
-////		Tarefa tarefa4 = new Tarefa(null, "Estudar a Bíblia", "Estudar Mateus", "Aline", new Date());
-////
-//		tarefaRepository.saveAll(Arrays.asList(tarefa1, tarefa2, tarefa3));
+		Tarefa tarefa1 = new Tarefa(1, "Estudar Java", "Estudar o primeiro módulo de estruturas em Java", "Aline", "MÉDIA", "29/04/2021");
+
+		tarefaRepository.saveAll(Arrays.asList(tarefa1));
 	}
 
 }

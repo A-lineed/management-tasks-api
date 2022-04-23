@@ -24,6 +24,7 @@ public class TarefaDTO implements Serializable {
 		this.titulo = obj.getTitulo();
 		this.descricao = obj.getDescricao();
 		this.responsavel = obj.getResponsavel();
+		this.prioridade = obj.getPrioridade();
 		this.deadline = obj.getDeadline();
 	}
 
